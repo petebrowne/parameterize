@@ -6,6 +6,7 @@ require 'bundler/setup'
 require 'rspec'
 require 'active_record'
 require 'parameterize'
+require 'parameterize/matcher'
 
 module ActiveRecord
   class Base
@@ -14,10 +15,11 @@ module ActiveRecord
   end
   
   Migration.verbose = false
+  
   Schema.define(:version => 1) do
     create_table :posts do |t|
-      t.string  :title
-      t.string  :param
+      t.string :title
+      t.string :param
     end
     
     create_table :users do |t|

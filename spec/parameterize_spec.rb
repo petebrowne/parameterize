@@ -25,4 +25,16 @@ describe Parameterize do
       post.to_param.should == 'hey-ho-let-s-go'
     end
   end
+  
+  describe 'matcher' do
+    context 'with Post' do
+      subject { post }
+      it      { should parameterize(:title) }
+    end
+    
+    context 'with User' do
+      subject { user }
+      it      { should parameterize(:name) }
+    end
+  end
 end
