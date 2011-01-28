@@ -2,20 +2,15 @@ require 'active_support/core_ext/array/extract_options'
 require 'active_support/core_ext/string/inflections'
 
 module Parameterize
-  autoload :Railtie, 'parameterize/railtie'
-  autoload :VERSION, 'parameterize/version'
-  
-  def parameterizes(*args)
+  # Adds a before validation filter for updating the param field
+  # with the parameterized version of the given source field.
+  def parameterize(source = :title)
     include InstanceMethods
     
-    options = args.extract_options!
-    source  = args.first || :title
+    class_attribute   :param_source_field
+    before_validation :update_param
     
-    validates_presence_of   :param
-    validates_uniqueness_of :param
-    before_validation       :update_param
-    
-    write_inheritable_attribute(:param_source_field, source)
+    self.param_source_field = source
   end
   
   module InstanceMethods
@@ -23,9 +18,12 @@ module Parameterize
       self.param
     end
     
+    # Updates the param field with the parameterized version of the source field.
     def update_param
-      self.param = __send__(self.class.read_inheritable_attribute(:param_source_field)).to_s.parameterize
+      self.param = __send__(self.class.param_source_field).to_s.parameterize
     end
     protected :update_param
   end
 end
+
+require 'parameterize/railtie' if defined?(Rails)

@@ -16,8 +16,8 @@ module ActiveRecord
   Migration.verbose = false
   Schema.define(:version => 1) do
     create_table :posts do |t|
-      t.string :title
-      t.string :param
+      t.string  :title
+      t.string  :param
     end
     
     create_table :users do |t|
@@ -28,9 +28,9 @@ module ActiveRecord
 end
 
 class Post < ActiveRecord::Base
-  parameterizes
+  parameterize
 end
 
 class User < ActiveRecord::Base
-  parameterizes :name
+  parameterize :name
 end

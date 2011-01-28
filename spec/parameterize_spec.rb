@@ -18,18 +18,6 @@ describe Parameterize do
     end
   end
   
-  it 'validates presence of param' do
-    post.valid?
-    post.errors[:param].should include("can't be blank")
-  end
-  
-  it 'validates uniqueness of param' do
-    Post.create(:title => 'Blah')
-    post.title = 'Blah'
-    post.valid?
-    post.errors[:param].should include('has already been taken')
-  end
-  
   describe '#to_param' do
     it 'returns the param' do
       post.title = "Hey Ho, Let's Go!"
