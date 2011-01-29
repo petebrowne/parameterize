@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = %w(Pete Browne)
   s.email       = %w(me@petebrowne.com)
-  s.homepage    = 'TODO'
+  s.homepage    = 'http://github.com/petebrowne/parameterize'
   s.summary     = %{The simplest permalink/slug solution for ActiveRecord 3.0}
   s.description = %{It uses ActiveSupport's String#parameterize to create the slug. There are no validations. No slug history. No extra tables or models.}
 
