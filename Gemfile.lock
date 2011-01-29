@@ -39,8 +39,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord (~> 3.0.3)
-  activesupport (~> 3.0.3)
   parameterize!
   rspec (~> 2.4.0)
   sqlite3-ruby (~> 1.3.3)

@@ -33,6 +33,19 @@ You could easily use [Babosa's](http://github.com/norman/babosa) #to_identifier 
     class String
       alias :parameterize :to_identifier
     end
+    
+There is also a Shoulda-style RSpec matcher available for use in your specs:
+
+    # spec_helper.rb
+    ...
+    require 'parameterize/matcher'
+    ...
+    
+    # post_spec.rb
+    ...
+    describe Post do
+      it { should parameterize(:title) }
+    end
 
 ## Copyright
 
