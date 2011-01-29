@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.authors     = %w(Pete Browne)
   s.email       = %w(me@petebrowne.com)
   s.homepage    = 'TODO'
-  s.summary     = %{The simplest permalink/slug solution for ActiveRecord 3.0.}
+  s.summary     = %{The simplest permalink/slug solution for ActiveRecord 3.0}
   s.description = %{It uses ActiveSupport's String#parameterize to create the slug. There are no validations. No slug history. No extra tables or models.}
 
   s.rubyforge_project = 'parameterize'
