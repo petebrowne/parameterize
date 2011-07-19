@@ -1,31 +1,21 @@
-lib = File.expand_path('../../lib', __FILE__)
-$:.unshift(lib) unless $:.include?(lib)
-
 require 'rubygems'
 require 'bundler/setup'
-require 'rspec'
+Bundler.require :default, :development
 require 'active_record'
-require 'parameterize'
 require 'parameterize/matcher'
 
-module ActiveRecord
-  class Base
-    extend Parameterize
-    establish_connection :adapter => 'sqlite3', :database => ':memory:'
+ActiveRecord::Base.extend Parameterize
+ActiveRecord::Base.establish_connection :adapter => 'sqlite3', :database => ':memory:'
+ActiveRecord::Migration.verbose = false
+ActiveRecord::Schema.define :version => 1 do
+  create_table :posts do |t|
+    t.string :title
+    t.string :param
   end
   
-  Migration.verbose = false
-  
-  Schema.define(:version => 1) do
-    create_table :posts do |t|
-      t.string :title
-      t.string :param
-    end
-    
-    create_table :users do |t|
-      t.string :name
-      t.string :param
-    end
+  create_table :users do |t|
+    t.string :name
+    t.string :param
   end
 end
 

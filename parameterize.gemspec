@@ -9,14 +9,14 @@ Gem::Specification.new do |s|
   s.authors     = %w(Pete Browne)
   s.email       = %w(me@petebrowne.com)
   s.homepage    = 'http://github.com/petebrowne/parameterize'
-  s.summary     = %{The simplest permalink/slug solution for ActiveRecord 3.0}
+  s.summary     = %{The simplest permalink/slug solution for ActiveRecord >= 3.0}
   s.description = %{It uses ActiveSupport's String#parameterize to create the slug. There are no validations. No slug history. No extra tables or models.}
 
   s.rubyforge_project = 'parameterize'
   
-  s.add_dependency             'activerecord',  '~> 3.0.3'
-  s.add_dependency             'activesupport', '~> 3.0.3'
-  s.add_development_dependency 'rspec',         '~> 2.4.0'
+  s.add_dependency             'activerecord',  '~> 3.0'
+  s.add_dependency             'activesupport', '~> 3.0'
+  s.add_development_dependency 'rspec',         '~> 2.6.0'
   s.add_development_dependency 'sqlite3-ruby',  '~> 1.3.3'
 
   s.files         = `git ls-files`.split("\n")
