@@ -30,4 +30,8 @@ module Parameterize
   end
 end
 
-require 'parameterize/railtie' if defined?(Rails)
+if defined?(ActiveRecord)
+  ActiveRecord::Base.extend Parameterize
+elsif defined?(Rails)
+  require 'parameterize/railtie'
+end
