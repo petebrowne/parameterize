@@ -6,17 +6,18 @@ It uses ActiveSupport's `String#parameterize` to create the slug. There are no v
 
 ## Getting Started
 
-```ruby
+``` ruby
 # Gemfile
 gem 'parameterize'
 ```
 
-```
-bundle install
-rails generate model User name:string param:string
+``` bash
+$ bundle install
+$ rails generate model User name:string param:string
+# Parameterize requires a string column named 'param'
 ```
    
-```ruby
+``` ruby
 # models/user.rb
 class User < ActiveRecord::Base
   parameterize :name
@@ -33,7 +34,7 @@ user.to_param = 'john-doe'
 
 Validations **are not** included. I prefer to be able to customize my validations directly in the model. The most common validations you would add are:
 
-```ruby
+``` ruby
 class Post < ActiveRecord::Base
   parameterize
   validates_presence_of :param
@@ -43,7 +44,7 @@ end
     
 You could easily use [Babosa's](http://github.com/norman/babosa) #to_identifier or [Stringex's](http://github.com/rsl/stringex) #to_url instead of ActiveSupport's #parameterize by just aliasing the method you want to use:
 
-```ruby
+``` ruby
 require 'babosa'
 class String
   alias :parameterize :to_identifier
@@ -52,7 +53,7 @@ end
     
 There is also a Shoulda-style RSpec matcher available for use in your specs:
 
-```ruby
+``` ruby
 # spec_helper.rb
 require 'parameterize/matcher'
 
