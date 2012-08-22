@@ -4,9 +4,9 @@ require 'active_record'
 require 'parameterize'
 require 'parameterize/matcher'
 
-ActiveRecord::Base.establish_connection :adapter => 'sqlite3', :database => ':memory:'
+ActiveRecord::Base.establish_connection adapter: 'sqlite3', database: ':memory:'
 ActiveRecord::Migration.verbose = false
-ActiveRecord::Schema.define :version => 1 do
+ActiveRecord::Schema.define version: 1 do
   create_table :posts do |t|
     t.string :title
     t.string :param
@@ -14,7 +14,7 @@ ActiveRecord::Schema.define :version => 1 do
 
   create_table :users do |t|
     t.string :name
-    t.string :param
+    t.string :slug
   end
 end
 
@@ -23,5 +23,5 @@ class Post < ActiveRecord::Base
 end
 
 class User < ActiveRecord::Base
-  parameterize :name
+  parameterize :name, target: :slug, update: true
 end
